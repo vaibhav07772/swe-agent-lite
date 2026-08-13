@@ -1,0 +1,41 @@
+# Env & Secrets
+.env
+service_key.json
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+*.egg-info/
+dist/
+build/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temp & Logs
+sandbox/
+temp/
+tmp/
+*.patch
+*.log
+logs/
+*.pid
+
+# Streamlit
+.streamlit/secrets.toml
+
+# OS
+.DS_Store
+Thumbs.db
