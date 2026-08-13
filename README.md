@@ -49,20 +49,19 @@
 ## 📦 Architecture Flow
 ```mermaid
 graph TD
-    A[User] -->|Inputs Repo + Issue| B(Streamlit UI)
-    B -->|POST /fix-issue| C(FastAPI Server)
-    C -->|Invoke Graph| D[LangGraph Agent]
+    A["User"] -->|"Inputs Repo + Issue"| B("Streamlit UI")
+    B -->|"POST /fix-issue"| C["FastAPI Server"]
+    C -->|"Invoke Graph"| D["LangGraph Agent"]
     
-    subgraph Agentic Workflow
-        D1[1. Planner] -->|Analyzes Codebase| D2[2. Coder]
-        D2 -->|Generates Patch| D3[3. Tester]
-        D3 -->|Runs Tests| D4[4. Reviewer]
+    subgraph "Agentic Workflow"
+        D1["1. Planner"] -->|"Analyzes Codebase"| D2["2. Coder"]
+        D2 -->|"Generates Patch"| D3["3. Tester"]
+        D3 -->|"Runs Tests"| D4["4. Reviewer"]
     end
     
-    D3 -->|Clones + Applies| E[Isolated Sandbox (Local Temp)]
-    D4 -->|Tests Passed?| F[GitHub API]
-    F -->|Creates PR| G[Pull Request]
-
+    D3 -->|"Clones + Applies"| E["Isolated Sandbox (Local Temp)"]
+    D4 -->|"Tests Passed?"| F["GitHub API"]
+    F -->|"Creates PR"| G["Pull Request"]
 
 🏁 Getting Started
 Prerequisites
