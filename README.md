@@ -47,7 +47,7 @@
 ---
 
 ## 📦 Architecture Flow
-
+```mermaid
 graph TD
     A[User] -->|Inputs Repo + Issue| B(Streamlit UI)
     B -->|POST /fix-issue| C(FastAPI Server)
