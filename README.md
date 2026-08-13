@@ -49,45 +49,35 @@
 ## 📦 Architecture Flow
 
 ```mermaid
-graph TD
-    A["User"] -->|"Inputs Repo + Issue"| B("Streamlit UI")
-    B -->|"POST /fix-issue"| C["FastAPI Server"]
-    C -->|"Invoke Graph"| D["LangGraph Agent"]
-    
-    subgraph "Agentic Workflow"
-        D1["1. Planner"] -->|"Analyzes Codebase"| D2["2. Coder"]
-        D2 -->|"Generates Patch"| D3["3. Tester"]
-        D3 -->|"Runs Tests"| D4["4. Reviewer"]
-    end
-    
-    D3 -->|"Clones + Applies"| E["Isolated Sandbox (Local Temp)"]
-    D4 -->|"Tests Passed?"| F["GitHub API"]
-    F -->|"Creates PR"| G["Pull Request"]
-```
+graph LR
+    A[User] --> B[Streamlit UI]
+    B --> C[FastAPI Server]
+    C --> D[Planner]
+    D --> E[Coder]
+    E --> F[Tester]
+    F --> G[Reviewer]
+    G --> H[Pull Request]
 
 
 🏁 Getting Started
+
 Prerequisites
 Python 3.11+
 Groq API Key (Free) - Get here
 GitHub Personal Access Token - Create here (Scope: repo + workflow)
 
 
-
 1. Clone & Setup
 git clone https://github.com/vaibhav07772/swe-agent-lite.git
 cd swe-agent-lite
-
 
 2. Create Conda Environment
 conda create -n swe-agent python=3.11 -y
 conda activate swe-agent
 
 
-
 3. Install Dependencies
 pip install -r requirements.txt
-
 
 4. Set Environment Variables
 Create a .env file in the root:
@@ -99,10 +89,8 @@ GITHUB_TOKEN=github_pat_xxxxxxxxxxxx
 Terminal 1 (Backend - FastAPI):
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 
-
 Terminal 2 (Frontend - Streamlit UI):
 streamlit run streamlit_app.py
-
 
 6. Access the UI
 Open your browser and go to: http://localhost:8501
@@ -124,6 +112,7 @@ Click "🚀 Fix Issue".
 Watch the Magic:
 The agent will process the issue.
 If tests pass, a Pull Request will be created automatically in your repo!
+
 
 
 📂 Project Structure
@@ -150,6 +139,7 @@ swe-agent-lite/
 □ Integration with Slack/Email for notifications.
 
 
+
 🤝 Contributing
 Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
 
@@ -157,10 +147,12 @@ Pull requests are welcome! For major changes, please open an issue first to disc
 MIT License - Feel free to use, modify, and distribute.
 
 
+
 🙏 Acknowledgements
 LangChain/LangGraph for the amazing agentic framework.
 Groq for the lightning-fast inference.
 Streamlit for the seamless UI.
+
 
 
 📬 Connect with Me
