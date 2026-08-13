@@ -47,6 +47,7 @@
 ---
 
 ## 📦 Architecture Flow
+
 ```mermaid
 graph TD
     A["User"] -->|"Inputs Repo + Issue"| B("Streamlit UI")
@@ -62,13 +63,13 @@ graph TD
     D3 -->|"Clones + Applies"| E["Isolated Sandbox (Local Temp)"]
     D4 -->|"Tests Passed?"| F["GitHub API"]
     F -->|"Creates PR"| G["Pull Request"]
+```
+
 
 🏁 Getting Started
 Prerequisites
 Python 3.11+
-
 Groq API Key (Free) - Get here
-
 GitHub Personal Access Token - Create here (Scope: repo + workflow)
 
 
